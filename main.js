@@ -47,8 +47,8 @@ for (let index = 0; index < pets.length; index += 1) {
 
 
 // ACCESSING PROPERTIES ON AN EXISTING OBJECT:
-console.log(user.username);  // Dot notation
-console.log(user["username"]);  // Bracket notation
+console.log(userFormData.username);  // Dot notation
+console.log(userFormData["username"]);  // Bracket notation
 
 let requestedData = "username";
-console.log(user[requestedData]);  // Bracket notation again
+console.log(userFormData[requestedData]);  // Bracket notation again
