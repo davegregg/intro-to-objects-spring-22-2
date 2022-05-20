@@ -1,3 +1,12 @@
+"use strict"
+
+// "OBJECT" synonyms:
+//   - Key-Value Pair
+//   - Dictionary
+//   - Hash/HashMap
+//   - Associative Array (an array with names instead of indexes)
+//   - POJO (Plain Old JavaScript Object)
+
 const userFormData = {
     username: "kenyatta_the_barbarian",
     email: "kenyatta97@hotmail.com",
@@ -15,7 +24,9 @@ const console = {
     log: function log (...data) { 
         document.body.append(...data)
     },
+
     assert: function (assertion, msg, ...substrings) { /* ... */ },
+
     dir: function (obj) { /* ... */ },
 }
 
@@ -47,8 +58,84 @@ for (let index = 0; index < pets.length; index += 1) {
 
 
 // ACCESSING PROPERTIES ON AN EXISTING OBJECT:
-console.log(userFormData.username);  // Dot notation
-console.log(userFormData["username"]);  // Bracket notation
+console.log(userFormData.username)  // Dot notation
+let username = userFormData["username"]  // Bracket notation
+let firstName = userFormData["1stName"]
 
-let requestedData = "username";
-console.log(userFormData[requestedData]);  // Bracket notation again
+let getRequestFromBackendServer = function () { /* ... */ }
+let requestedData = getRequestFromBackendServer()
+let targetData = userFormData[requestedData]  // Bracket notation again
+
+
+let createUser = function (username, email, age, favoriteBooks) {
+    let user = {
+        username: username,
+        email: email,
+        age: age,
+        favoriteBooks: favoriteBooks
+    }
+
+    return user
+}
+
+
+// https://www.codewars.com/kata/56786a687e9a88d1cf00005d/train/javascript
+function validateWord (string) {
+    const lowerCasedString = string.toLocaleLowerCase()
+    const counts = {}
+    
+    for (const char of lowerCasedString) {
+      if (counts.hasOwnProperty(char)) {
+        counts[char] += 1
+      } else {
+        counts[char] = 1
+      }
+    }
+    
+    console.log(counts)
+    
+    const values = Object.values(counts)
+    const isEqual = (value) => value === values[0]
+    
+    return values.every(isEqual)
+    
+    // let firstValue = null
+    // for (const key in counts) {
+    //   const value = counts[key]
+    // 
+    //   if (firstValue === null) {
+    //     firstValue = value
+    //   } else {
+    //     if (value !== firstValue) {
+    //       return false
+    //     }
+    //   }
+    // }
+    // 
+    // return true
+
+    // const values = Object.values(counts)
+    // const uniqueValueCount = new Set(values).size
+    // return uniqueValueCount === 1
+}
+
+
+
+
+const tennisBall = Object.freeze({
+    brand: "Wilson",
+    type: 4,
+    color: "chartreuse",
+    peeled: false,
+    condition: "mild wear",
+})
+
+// tennisBall.brand = "WILLLSSOON!"
+
+console.log(tennisBall)
+
+
+// If you are looking for the Pokémon JSON thing,
+// look for the file "pokemon.js" in this project!
+
+
